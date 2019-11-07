@@ -1,7 +1,7 @@
 <template>
   <div>
-    <ul :key="fieldsId" class="placeholder-list">
-      <li class="letter-field" v-for="(field, index) in fields" :key="fieldsId + index">
+    <ul class="placeholder-list">
+      <li class="letter-field" v-for="(field, index) in fields" :key="index">
         <span :class="{'filed-field': field}">
           <span v-if="checkLetter(field)">{{field}}</span>
         </span>
@@ -17,7 +17,7 @@ export default {
     fields: Array,
     gL: Set,
     word: String,
-    fieldId: String,
+    fieldsId: String,
   },
   methods: {
     checkLetter(field) {

@@ -1,23 +1,15 @@
 <template>
   <div class="main-app" id="app">
-    {{word}}
     <div class="top-section">
       <HangManImage :imgClass="imgClass"/>
-      <div class="wrong-letters-container">
-        <p class="title">You missed:</p>
-        <ul class="wrong-letters">
-          <li v-for="(letter, index) in wrongLetters" :key="index">
-            {{letter}}
-          </li>
-        </ul>
-      </div>
+      <WrongLetters :letters="wrongLetters" :key="wrongId" />
     </div>
-    <WrongLetters :letters="wrongLetters"/>
     <LettersPlaceholders :fields="comutedFields" :gL="goodLetters" :word="word" :key="fieldsId"/>
     <div v-show="complete" class="word-completed">
       <button @click.prevent="nextWord">Next word</button>
     </div>
     <div v-show="lost" class="game-over">
+      <p class="word">{{word}}</p>
       <span>GAME OVER</span>
       <button @click.prevent="newGame">New word</button>
     </div>
@@ -50,7 +42,8 @@ export default {
       goodLetters: new Set(),
       wrongLetters: new Set(),
       fields: [],
-      fieldsId: new Date().getTime(),
+      fieldsId: this.getTime(),
+      wrongId: `wrong_${this.getTime()}`,
       complete: false,
       lost: false,
     };
@@ -85,9 +78,13 @@ export default {
   methods: {
     add() {
       this.imgState += 1;
+      this.wrongId = `wrong_${this.getTime()}`;
+    },
+    getTime() {
+      return new Date().getTime();
     },
     fill() {
-      this.fieldsId = new Date().getTime();
+      this.fieldsId = this.getTime();
     },
     getWord() {
       const random = Math.floor(Math.random() * (this.wordsArray.length));
@@ -98,7 +95,7 @@ export default {
       this.goodLetters.clear();
       this.wrongLetters.clear();
       this.imgState = 0;
-      this.fieldsId = new Date().getTime();
+      this.fieldsId = this.getTime();
     },
     checkKey(e) {
       if (e.keyCode > 64 && e.keyCode < 91) {
@@ -175,7 +172,8 @@ button{
   position: relative;
   background-color: #f5f5f5;
   border-radius: 10px;
-  width: calc(100% - 440px);
+  width: 80%;
+  max-width: 1600px;
   margin: 0 auto;
   margin-top: 220px;
   padding: 72px;
@@ -193,17 +191,6 @@ button{
 .main-app > * {
   z-index: 1;
   position: relative;
-}
-.wrong-letters{
-  text-transform: uppercase;
-  font-size: 92px;
-  color: #4d69fa;
-  list-style-type: none;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding: 0;
-  margin: 0;
 }
 .game-over, .word-completed{
   position: absolute;
@@ -235,15 +222,11 @@ button{
     margin-bottom: 32px;
   }
 }
-.wrong-letters-container{
-  width: 50%;
-  text-align: left;
-}
-.wrong-letters-container .title{
-  font-size: 24px;
-  color: #53555d;
+.word{
+  font-size: 48px;
+  text-decoration: underline;
   text-transform: uppercase;
-  }
+}
 .top-section{
   display: flex;
   justify-content: space-between;
