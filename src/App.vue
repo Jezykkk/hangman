@@ -96,6 +96,7 @@ export default {
       this.wrongLetters.clear();
       this.imgState = 0;
       this.fieldsId = this.getTime();
+      this.wrongId = `wrong_${this.getTime()}`;
     },
     checkKey(e) {
       if (e.keyCode > 64 && e.keyCode < 91) {
