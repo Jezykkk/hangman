@@ -177,7 +177,7 @@ button{
   max-width: 1600px;
   margin: 0 auto;
   margin-top: 220px;
-  padding: 72px;
+  padding: 72px 74px;
   box-sizing: border-box;
 }
 .main-app::before{
