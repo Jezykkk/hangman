@@ -37,7 +37,8 @@ export default {
     padding: 0;
   }
   .filed-field{
-    background-color: #53555d;
+    transition: background-color .4s ease;
+    background-color: rgba(83, 85, 93, 0.98);
     display: flex;
     width: 100%;
     height: 100%;
@@ -50,15 +51,25 @@ export default {
     text-transform: uppercase;
   }
   .letter-field{
+    display: block;
     width: 125px;
     height: 140px;
-    background-color: #e6e6e7;
+    box-sizing: border-box;
     border-radius: 10px;
-    margin-right: 5px;
-    margin-left: 5px;
+    margin-right: 10px;
+    padding: 0;
     overflow: hidden;
     font-family: AllerDisplay, Arial, sans-serif;
     font-size: 92px;
     line-height: 1;
+  }
+  .letter-field > span:not(.filed-field){
+    background-color: #e6e6e7;
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+  }
+  .letter-field:first-of-type{
+    margin-right: 0;
   }
 </style>

@@ -31,14 +31,13 @@ export default {
   created() {
     window.addEventListener('keyup', this.checkKey);
     this.getWord();
-    // this.fetchData();
+    this.fetchData();
   },
   data() {
     return {
       reactive: true,
       imgState: 0,
-      word: 'test',
-      wordsArray: ['polowanie', 'losowanie', 'turysta', 'sekunda', 'personel', 'sterta', 'oliwka', 'konferencja', 'kostka', 'fala', 'cytryna', 'personel', 'ranek', 'futro'],
+      word: '',
       goodLetters: new Set(),
       wrongLetters: new Set(),
       fields: [],
@@ -87,8 +86,7 @@ export default {
       this.fieldsId = this.getTime();
     },
     getWord() {
-      const random = Math.floor(Math.random() * (this.wordsArray.length));
-      this.word = this.wordsArray[random];
+      this.fetchData();
     },
     nextWord() {
       this.getWord();
@@ -126,26 +124,29 @@ export default {
       window.addEventListener('keyup', this.checkKey);
       this.nextWord();
     },
-    // fetchData() {
-    //   fetch('https://wordsapiv1.p.rapidapi.com/words/?random=true', {
-    //     method: 'GET',
-    //     headers: {
-    //       'X-Mashape-Key': 'cd13dd1d51mshd93c66d35e2d5c4p13f708jsn7c88284e88b8',
-    //       Accept: 'application/json',
-    //     },
-    //   }).then((response) => {
-    //     if (response.status !== 200) {
-    //       console.log(`Looks like there was a problem. Status Code: ${response.status}`);
-    //       console.log(response);
-    //       return;
-    //     }
-    //     response.json().then((data) => {
-    //       console.log(data);
-    //     });
-    //   }).catch((err) => {
-    //     console.log('Fetch Error :-S', err);
-    //   });
-    // },
+    fetchData() {
+      fetch('https://words.desknet.pl/basic/5/11', {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+        },
+      }).then((response) => {
+        if (response.status !== 200) {
+          console.log(`Looks like there was a problem. Status Code: ${response.status}`);
+          return;
+        }
+        response.json().then((data) => {
+          const word = data.name;
+          if (word.length > 11 || /\s/.test(word)) {
+            this.fetchData();
+            return;
+          }
+          this.word = word.toLowerCase();
+        });
+      }).catch((err) => {
+        console.log('Fetch Error: ', err);
+      });
+    },
   },
 };
 </script>
@@ -173,12 +174,14 @@ button{
   position: relative;
   background-color: #f5f5f5;
   border-radius: 10px;
-  width: 80%;
-  max-width: 1600px;
+  width: 1621px;
+  height: 980px;
   margin: 0 auto;
   margin-top: 220px;
-  padding: 72px 74px;
+  padding: 72px 72px 72px 74px;
+  box-shadow: 0px 3px 95px 0px rgba(0, 0, 0, 0.26);
   box-sizing: border-box;
+  overflow: hidden;
 }
 .main-app::before{
   position: absolute;

@@ -20,13 +20,15 @@ export default {
 
 <style scoped lang="scss">
 .wrong-letters-container{
-  width: 50%;
+  width: 770px;
   text-align: left;
 }
 .wrong-letters-container .title{
-  font-size: 24px;
+  font-size: 32px;
+  margin-top: -7px;
   color: #53555d;
   text-transform: uppercase;
+  margin-bottom: 0;
 }
 .wrong-letters{
   text-transform: uppercase;
@@ -38,5 +40,9 @@ export default {
   align-items: flex-start;
   padding: 0;
   margin: 0;
+  margin-top: -3px;
+  li{
+    padding-right: 20px;
+  }
 }
 </style>
