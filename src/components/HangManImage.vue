@@ -433,8 +433,6 @@ $ear-color3: #feb769;
     transition: .2s opacity ease-in;
   }
 .hangman0{
-  .gallows-horizontal,
-  .gallows-vertical,
   .head,
   .left-arm,
   .right-arm,
@@ -451,8 +449,6 @@ $ear-color3: #feb769;
   }
 }
 .hangman1{
-  .gallows-horizontal,
-  .gallows-vertical,
   .left-arm,
   .right-arm,
   .neck,
@@ -467,8 +463,6 @@ $ear-color3: #feb769;
   }
 }
 .hangman2{
-  .gallows-horizontal,
-  .gallows-vertical,
   .left-arm,
   .right-arm,
   .left-hand,
@@ -482,8 +476,6 @@ $ear-color3: #feb769;
   }
 }
 .hangman3{
-  .gallows-horizontal,
-  .gallows-vertical,
   .left-arm,
   .right-arm,
   .left-hand,
@@ -496,8 +488,6 @@ $ear-color3: #feb769;
   }
 }
 .hangman4{
-  .gallows-horizontal,
-  .gallows-vertical,
   .left-arm,
   .left-hand,
   .right-hand,
@@ -509,8 +499,6 @@ $ear-color3: #feb769;
   }
 }
 .hangman5{
-  .gallows-horizontal,
-  .gallows-vertical,
   .left-hand,
   .right-hand,
   .left-leg,
@@ -521,8 +509,6 @@ $ear-color3: #feb769;
   }
 }
 .hangman6{
-  .gallows-horizontal,
-  .gallows-vertical,
   .left-hand,
   .left-leg,
   .right-leg,
@@ -532,8 +518,6 @@ $ear-color3: #feb769;
   }
 }
 .hangman7{
-  .gallows-horizontal,
-  .gallows-vertical,
   .left-leg,
   .right-leg,
   .left-feet,
@@ -542,8 +526,6 @@ $ear-color3: #feb769;
   }
 }
 .hangman8{
-  .gallows-horizontal,
-  .gallows-vertical,
   .left-leg,
   .left-feet,
   .right-feet{
@@ -551,23 +533,13 @@ $ear-color3: #feb769;
   }
 }
 .hangman9{
-  .gallows-horizontal,
-  .gallows-vertical,
   .left-feet,
   .right-feet{
-    opacity: 0;;
-  }
-}
-.hangman10{
-  .gallows-horizontal,
-  .gallows-vertical,
-  .left-feet{
     opacity: 0;
   }
 }
-.hangman11{
-  .gallows-horizontal,
-  .gallows-vertical{
+.hangman10{
+  .left-feet{
     opacity: 0;
   }
 }

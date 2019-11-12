@@ -2,7 +2,7 @@
   <div>
     <ul class="placeholder-list">
       <li class="letter-field" v-for="(field, index) in fields" :key="index">
-        <span :class="{'filed-field': field}">
+        <span :class="{'filed-field': field && field !== ' '}">
           <span v-if="checkLetter(field)">{{field}}</span>
         </span>
       </li>
@@ -59,7 +59,6 @@ export default {
     margin-right: 10px;
     padding: 0;
     overflow: hidden;
-    font-family: AllerDisplay, Arial, sans-serif;
     font-size: 92px;
     line-height: 1;
   }

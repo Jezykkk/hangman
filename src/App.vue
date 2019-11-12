@@ -110,12 +110,13 @@ export default {
     isWin() {
       this.complete = false;
       if (this.goodLetters.size === this.wordUniqueL.size) {
+        window.removeEventListener('keyup', this.checkKey);
         this.complete = true;
         // this.nextWord();
       }
     },
     isGameOVer() {
-      this.lost = this.imgState > 11;
+      this.lost = this.imgState > 10;
       if (this.lost === true) {
         window.removeEventListener('keyup', this.checkKey);
       }
@@ -137,7 +138,7 @@ export default {
         }
         response.json().then((data) => {
           const word = data.name;
-          if (word.length > 11 || /\s/.test(word)) {
+          if (word.length > 11) {
             this.fetchData();
             return;
           }
@@ -165,10 +166,16 @@ button{
   background-color: transparent;
   color: #ffba00;
   border: 3px dashed #ffba00;
-  font-size: 24px;
-  padding: 38px 90px;
-  border-radius: 60px;
-  text-transform: uppercase
+  display: block;
+  width: 348px;
+  height: 107px;
+  font-size: 30px;
+  line-height: 1.282;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-width: 4px;
+  border-radius: 48px;
+  cursor: pointer;
 }
 .main-app{
   position: relative;
@@ -205,9 +212,10 @@ button{
   left: 0;
   right: 0;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
+  padding-top: 203px;
   color: #fff;
   &::before{
     content: ' ';
@@ -217,14 +225,21 @@ button{
     left: 0;
     right: 0;
     background-color: #3b4163;
-    opacity: 0.6;
+    opacity: 0.741;
     z-index: -1;
   }
   & > span{
     font-size: 92px;
     color: #fff;
-    margin-bottom: 32px;
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-bottom: 23px;
   }
+}
+.word-completed{
+  justify-content: center;
+  align-items: center;
+  padding: 0;
 }
 .word{
   font-size: 48px;
